@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "MealMind",
+    "slug": "mealmind",
+    "version": "3.0.0",
+    "icon": "./assets/logo.png",
+    "android": {
+      "package": "com.mealmind.app",
+      "versionCode": 5
+    }
+  }
+}
