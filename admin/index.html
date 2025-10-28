@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8"><title>MealMind Admin</title></head><body>
+<h1>MealMind - Admin (demo)</h1>
+<p>Pridaj nový recept (POST /api/admin/recipe)</p>
+<form id="f">
+<input id="name" placeholder="Názov" /><br/>
+<input id="time" placeholder="Čas" /><br/>
+<input id="cost" placeholder="Cena" /><br/>
+<input id="servings" placeholder="Porcie" /><br/>
+<input id="mealType" placeholder="breakfast/lunch/dinner" /><br/>
+<textarea id="ingredients" placeholder="Ingrediencie, čiarkou"></textarea><br/>
+<input id="image" placeholder="Image URL" /><br/>
+<button type="button" onclick="send()">Pridať</button>
+</form>
+<script>
+async function send(){
+  const r={ name:document.getElementById('name').value, time:Number(document.getElementById('time').value)||10, estimatedCost:Number(document.getElementById('cost').value)||1, servings:Number(document.getElementById('servings').value)||2, mealType:document.getElementById('mealType').value||'lunch', ingredients:(document.getElementById('ingredients').value||'').split(',').map(s=>s.trim()), image:document.getElementById('image').value||'' };
+  const res = await fetch('/api/admin/recipe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(r)});
+  alert('Odoslané: ' + JSON.stringify(await res.json()));
+}
+</script>
+</body></html>
